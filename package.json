@@ -1,0 +1,23 @@
+{
+  "name": "s3-batch-change-properties",
+  "version": "1.0.0",
+  "description": "Changes S3 metadata in batch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "AWS_PROFILE=auicdn DEBUG=* node --harmony index.js"
+  },
+  "keywords": [
+    "s3",
+    "metadata",
+    "batch"
+  ],
+  "author": "Joscha Feth <jfeth@atlassian.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "aws-sdk": "^2.2.7",
+    "debug": "^2.2.0",
+    "lodash": "^3.10.1",
+    "object-assign": "^4.0.1"
+  }
+}
