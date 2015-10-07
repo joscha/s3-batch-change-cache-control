@@ -44,7 +44,7 @@ function list(marker) {
         var newMeta = objectAssign({}, headData.Metadata, {
           'cache-control': cacheControl
         });
-        if(_.isEqual(headData.Metadata, newMeta) && cacheControl === object.CacheControl) {
+        if(_.isEqual(headData.Metadata, newMeta) && cacheControl === headData.CacheControl) {
           debug(`Metadata and Cache-Control is same for '${object.Key}'`);
           return;
         }
