@@ -93,25 +93,23 @@ function start() {
         .then((headData) => {
           debug('headData', headData);
           // Amend the meta data we have already, leaving everything intact, just changing the cache-control
-          var newMeta = objectAssign({}, headData.Metadata, {
-            'cache-control': cacheControl,
-          });
-
-          if(headData.ContentType) {
-            // keep the content type if one has been set - otherwise it will be changed to application/octet-stream
-            newMeta['content-type'] = headData.ContentType;
-          }
+          var newMeta = objectAssign({}, headData.Metadata);
+          // in case there is old cache-control Metadata set, we remove it - if we don't it will be prefixed with x-amz-meta- to avoid collisions
+          delete newMeta['cache-control'];
+          // in case there is old content-type Metadata set, we remove it - if we don't it will be prefixed with x-amz-meta- to avoid collisions
+          delete newMeta['content-type'];
 
           if(_.isEqual(headData.Metadata, newMeta) && cacheControl === headData.CacheControl) {
             info(`Metadata and Cache-Control is same for '${object.Key}', skipping...`);
             return {};
           }
 
-          return { object, newMeta };
+          return { object, newMeta, headData };
         })
         .then((data) => {
           let object = data.object;
           let newMeta = data.newMeta;
+          let headData = data.headData;
 
           if(object && newMeta) {
             debug('newMeta', newMeta);
@@ -120,13 +118,17 @@ function start() {
               info(`Would have applied Metadata and Cache-Control for '${object.Key}'.`);
               return;
             }
+
             return Q.ninvoke(s3, 'copyObject', {
               Bucket: bucket,
               CopySource: encodeURIComponent(`${bucket}/${object.Key}`),
               Key: object.Key,
+              /* we do have to replace the Metadata, even though it is probably the same, otherwise we get a
+                "InvalidRequest: This copy request is illegal because it is trying to copy an object to itself without changing the object's metadata, storage class, website redirect location or encryption attributes"
+              */
               MetadataDirective: 'REPLACE',
-              CacheControl: newMeta['cache-control'],
-              ContentType: newMeta['content-type'],
+              CacheControl: cacheControl,
+              ContentType: headData.ContentType,
               Metadata: newMeta
             }).then((copyData) => {
               debug('copyData', copyData);
