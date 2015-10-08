@@ -129,6 +129,9 @@ function start() {
               MetadataDirective: 'REPLACE',
               CacheControl: cacheControl,
               ContentType: headData.ContentType,
+              ContentDisposition: headData.ContentDisposition,
+              ContentEncoding: headData.ContentEncoding,
+              ContentLanguage: headData.ContentLanguage,
               Metadata: newMeta
             }).then((copyData) => {
               debug('copyData', copyData);
