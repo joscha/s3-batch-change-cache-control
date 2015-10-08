@@ -16,7 +16,7 @@ const CACHE_CONTROL_DEFAULT = `public, max-age=${86400 * 365}`;
 
 program
   .version(pkg.version)
-  .option('-d, --dry-run', 'Whether to do a dry-run (read-only)')
+  .option('-n, --dry-run', 'Whether to do a dry-run (read-only)')
   .option('-b, --bucket <bucket>', 'The bucket to use')
   .option('-p, --profile [profile]', 'The AWS profile to use; defaults to "default"')
   .option('-p, --prefix [prefix]', 'The prefix to use when searching for S3 objects')
