@@ -1,11 +1,11 @@
 {
-  "name": "s3-batch-change-properties",
+  "name": "s3-batch-change-cache-control",
   "version": "1.0.0",
-  "description": "Changes S3 metadata in batch",
+  "description": "Changes S3 cache-control headers in batch",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "AWS_PROFILE=auicdn DEBUG=* node --harmony index.js"
+    "start": "DEBUG=s3-batch-ccc:info,s3-batch-ccc:error node --harmony index.js"
   },
   "keywords": [
     "s3",
@@ -16,8 +16,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "aws-sdk": "^2.2.7",
+    "commander": "^2.8.1",
     "debug": "^2.2.0",
     "lodash": "^3.10.1",
-    "object-assign": "^4.0.1"
+    "object-assign": "^4.0.1",
+    "q": "^1.4.1"
   }
 }
