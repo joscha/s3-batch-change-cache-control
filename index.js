@@ -136,6 +136,9 @@ function start() {
             }).then((copyData) => {
               debug('copyData', copyData);
               info(`Applied Metadata and Cache-Control for '${object.Key}'.`);
+            })
+            .catch((err) => {
+              error(err, err.stack);
             });
           }
         });
