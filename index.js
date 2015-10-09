@@ -101,46 +101,37 @@ function start() {
 
           if(_.isEqual(headData.Metadata, newMeta) && cacheControl === headData.CacheControl) {
             info(`Metadata and Cache-Control is same for '${object.Key}', skipping...`);
-            return {};
+            return;
           }
 
-          return { object, newMeta, headData };
-        })
-        .then((data) => {
-          let object = data.object;
-          let newMeta = data.newMeta;
-          let headData = data.headData;
+          debug('newMeta', newMeta);
 
-          if(object && newMeta) {
-            debug('newMeta', newMeta);
-
-            if(dryRun) {
-              info(`Would have applied Metadata and Cache-Control for '${object.Key}'.`);
-              return;
-            }
-
-            return Q.ninvoke(s3, 'copyObject', {
-              Bucket: bucket,
-              CopySource: encodeURIComponent(`${bucket}/${object.Key}`),
-              Key: object.Key,
-              /* we do have to replace the Metadata, even though it is probably the same, otherwise we get a
-                "InvalidRequest: This copy request is illegal because it is trying to copy an object to itself without changing the object's metadata, storage class, website redirect location or encryption attributes"
-              */
-              MetadataDirective: 'REPLACE',
-              CacheControl: cacheControl,
-              ContentType: headData.ContentType,
-              ContentDisposition: headData.ContentDisposition,
-              ContentEncoding: headData.ContentEncoding,
-              ContentLanguage: headData.ContentLanguage,
-              Metadata: newMeta
-            }).then((copyData) => {
-              debug('copyData', copyData);
-              info(`Applied Metadata and Cache-Control for '${object.Key}'.`);
-            })
-            .catch((err) => {
-              error(err, err.stack);
-            });
+          if(dryRun) {
+            info(`Would have applied Metadata and Cache-Control for '${object.Key}'.`);
+            return;
           }
+
+          return Q.ninvoke(s3, 'copyObject', {
+            Bucket: bucket,
+            CopySource: encodeURIComponent(`${bucket}/${object.Key}`),
+            Key: object.Key,
+            /* we do have to replace the Metadata, even though it is probably the same, otherwise we get a
+              "InvalidRequest: This copy request is illegal because it is trying to copy an object to itself without changing the object's metadata, storage class, website redirect location or encryption attributes"
+            */
+            MetadataDirective: 'REPLACE',
+            CacheControl: cacheControl,
+            ContentType: headData.ContentType,
+            ContentDisposition: headData.ContentDisposition,
+            ContentEncoding: headData.ContentEncoding,
+            ContentLanguage: headData.ContentLanguage,
+            Metadata: newMeta
+          }).then((copyData) => {
+            debug('copyData', copyData);
+            info(`Applied Metadata and Cache-Control for '${object.Key}'.`);
+          })
+          .catch((err) => {
+            error(err, err.stack);
+          });
         });
       }));
     })
