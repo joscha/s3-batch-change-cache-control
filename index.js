@@ -78,7 +78,7 @@ function start() {
       });
       if(listData.IsTruncated) {
         info('There are more results, fetching...')
-        list(listData.NextMarker);
+        list(listData.NextMarker, prefix);
       }
       return objects;
     })
