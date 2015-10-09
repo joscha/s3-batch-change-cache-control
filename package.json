@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Changes S3 cache-control headers in batch",
   "main": "index.js",
+  "bin": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "DEBUG=s3-batch-ccc:info,s3-batch-ccc:error node --harmony index.js"
