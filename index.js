@@ -100,14 +100,14 @@ function start() {
           delete newMeta['content-type'];
 
           if(_.isEqual(headData.Metadata, newMeta) && cacheControl === headData.CacheControl) {
-            info(`Metadata and Cache-Control is same for '${object.Key}', skipping...`);
+            info(`Metadata and Cache-Control is same for "${object.Key}", skipping...`);
             return;
           }
 
           debug('newMeta', newMeta);
 
           if(dryRun) {
-            info(`Would have applied Metadata and Cache-Control for '${object.Key}'.`);
+            info(`Would have applied Metadata and Cache-Control for "${object.Key}".`);
             return;
           }
 
@@ -127,7 +127,7 @@ function start() {
             Metadata: newMeta
           }).then((copyData) => {
             debug('copyData', copyData);
-            info(`Applied Metadata and Cache-Control for '${object.Key}'.`);
+            info(`Applied Metadata and Cache-Control for "${object.Key}".`);
           })
           .catch((err) => {
             error(err, err.stack);
