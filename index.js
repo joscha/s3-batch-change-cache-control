@@ -59,7 +59,7 @@ function start() {
   });
 
   function list(marker, prefix) {
-    info(`Listing objects of bucket "${bucket}"` + (marker ? ` from marker "${marker}"...` : '') + (prefix ? `with prefix "${prefix}"` : ''));
+    info(`Listing objects of bucket "${bucket}"` + (marker ? ` from marker "${marker}"...` : '') + (prefix ? ` with prefix "${prefix}"` : ''));
 
     return Q.ninvoke(s3, 'listObjects', {
       Marker: marker,
