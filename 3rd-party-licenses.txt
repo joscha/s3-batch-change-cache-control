@@ -1,0 +1,46 @@
+├─ aws-sdk@2.2.7
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/aws/aws-sdk-js
+│  └─ licenseFile: /Users/jfeth/dev/s3-batch-change-cache-control/node_modules/aws-sdk/LICENSE.txt
+├─ commander@2.8.1
+│  ├─ licenses: MIT
+│  ├─ repository: git+https://github.com/tj/commander.js
+│  └─ licenseFile: /Users/jfeth/dev/s3-batch-change-cache-control/node_modules/commander/LICENSE
+├─ debug@2.2.0
+│  ├─ licenses: MIT
+│  └─ repository: https://github.com/visionmedia/debug
+├─ graceful-readlink@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/zhiyelee/graceful-readlink
+│  └─ licenseFile: /Users/jfeth/dev/s3-batch-change-cache-control/node_modules/commander/node_modules/graceful-readlink/LICENSE
+├─ lodash@3.10.1
+│  ├─ licenses: MIT
+│  ├─ repository: git+https://github.com/lodash/lodash
+│  └─ licenseFile: /Users/jfeth/dev/s3-batch-change-cache-control/node_modules/lodash/LICENSE
+├─ ms@0.7.1
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/guille/ms.js
+│  └─ licenseFile: /Users/jfeth/dev/s3-batch-change-cache-control/node_modules/debug/node_modules/ms/LICENSE
+├─ object-assign@4.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: git+https://github.com/sindresorhus/object-assign
+│  └─ licenseFile: /Users/jfeth/dev/s3-batch-change-cache-control/node_modules/object-assign/license
+├─ q@1.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/kriskowal/q
+│  └─ licenseFile: /Users/jfeth/dev/s3-batch-change-cache-control/node_modules/q/LICENSE
+├─ s3-batch-change-cache-control@1.0.0
+│  ├─ licenses: Apache-2.0
+│  └─ licenseFile: /Users/jfeth/dev/s3-batch-change-cache-control/LICENSE
+├─ sax@0.5.3
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/isaacs/sax-js
+│  └─ licenseFile: /Users/jfeth/dev/s3-batch-change-cache-control/node_modules/aws-sdk/node_modules/sax/LICENSE-W3C.html
+├─ xml2js@0.2.8
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/Leonidas-from-XIV/node-xml2js
+│  └─ licenseFile: /Users/jfeth/dev/s3-batch-change-cache-control/node_modules/aws-sdk/node_modules/xml2js/LICENSE
+└─ xmlbuilder@0.4.2
+   ├─ licenses: MIT
+   └─ repository: https://github.com/oozcitak/xmlbuilder-js
+
