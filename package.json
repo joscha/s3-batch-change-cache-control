@@ -19,6 +19,10 @@
     "metadata",
     "batch"
   ],
+  "repository": {
+      "type": "git",
+      "url": "https://bitbucket.org/atlassian/s3-batch-change-cache-control"
+  },
   "author": "Joscha Feth <jfeth@atlassian.com>",
   "license": "Apache-2.0",
   "dependencies": {
