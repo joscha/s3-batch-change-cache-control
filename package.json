@@ -1,6 +1,6 @@
 {
   "name": "s3-batch-change-cache-control",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Changes S3 cache-control headers in batch",
   "main": "index.js",
   "bin": "./index.js",
@@ -20,8 +20,8 @@
     "batch"
   ],
   "repository": {
-      "type": "git",
-      "url": "https://bitbucket.org/atlassian/s3-batch-change-cache-control"
+    "type": "git",
+    "url": "https://bitbucket.org/atlassian/s3-batch-change-cache-control"
   },
   "author": "Joscha Feth <jfeth@atlassian.com>",
   "license": "Apache-2.0",
