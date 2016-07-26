@@ -6,14 +6,14 @@ With this tool you can change the `Cache-Control` header of multiple S3 objects 
 ## Getting started
 
 ```console
-npm start -- --bucket=your-s3-bucket --profile=your-aws-profile --dry-run apply
+s3-batch-change-cache-control --bucket=your-s3-bucket --profile=your-aws-profile --dry-run apply
 ```
 
 Once you are satisfied with the output, remove the `dry-run` flag :)
 
 ### Logging the output to a file
 ```console
-DEBUG_FD=3 DEBUG=*:info,*:error node --harmony index.js --bucket=your-s3-bucket --profile=your-aws-profile apply 3> apply.log
+DEBUG_FD=3 DEBUG=*:info,*:error s3-batch-change-cache-control --bucket=your-s3-bucket --profile=your-aws-profile apply 3> apply.log
 ```
 
 ### Hint
