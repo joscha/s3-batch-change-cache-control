@@ -11,6 +11,9 @@
   "engines": {
     "node": ">=6.1"
   },
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "s3",
     "metadata",
