@@ -1,5 +1,7 @@
 # S3 Cache-Control metadata batch changes
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/joscha/s3-batch-change-cache-control.svg)](https://greenkeeper.io/)
+
 With this tool you can change the `Cache-Control` header of multiple S3 objects in batch.
 
 ***
