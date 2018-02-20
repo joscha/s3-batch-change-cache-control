@@ -20,7 +20,8 @@ program
   .option('-b, --bucket <bucket>', 'The bucket to use')
   .option('-p, --profile [profile]', 'The AWS profile to use; defaults to "default"')
   .option('-p, --prefix [prefix]', 'The prefix to use when searching for S3 objects')
-  .option('-cc, --cache-control [header]',`The Cache-Control header; defaults to "${CACHE_CONTROL_DEFAULT}"`);
+  .option('-cc, --cache-control [header]',`The Cache-Control header; defaults to "${CACHE_CONTROL_DEFAULT}"`)
+  .option('-a, --acl <rule>','The ACL rule to enforce on the copied object');
 
 program
   .command('apply')
@@ -42,6 +43,8 @@ function start() {
   let bucket = program.bucket;
   let profile = 'default';
   let cacheControl = program.cacheControl || CACHE_CONTROL_DEFAULT;
+  let acl = program.acl || false;
+
 
   if(program.profile) {
     profile = program.profile;
@@ -111,7 +114,7 @@ function start() {
             return;
           }
 
-          return Q.ninvoke(s3, 'copyObject', {
+          var _object = {
             Bucket: bucket,
             CopySource: encodeURIComponent(`${bucket}/${object.Key}`),
             Key: object.Key,
@@ -125,7 +128,14 @@ function start() {
             ContentEncoding: headData.ContentEncoding,
             ContentLanguage: headData.ContentLanguage,
             Metadata: newMeta
-          }).then((copyData) => {
+          }
+
+          if (acl) {
+            _object['ACL'] = acl;
+          }
+
+          return Q.ninvoke(s3, 'copyObject', _object)
+          .then((copyData) => {
             debug('copyData', copyData);
             info(`Applied Metadata and Cache-Control for "${object.Key}".`);
           })
